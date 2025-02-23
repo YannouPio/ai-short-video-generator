@@ -1,11 +1,15 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Header  from "./_components/Header";
+import Hero from "./_components/Hero";
 
 export default function Home() {
   return (
-    <div>
-      <h1>AI 短视频生成器</h1>
-      <Button>生成视频</Button>
+    <div className="md:px-16 lg:px-24 xl:px-36">
+      {/* header */}
+      <Header />
+      {/* Hero */}
+      <Hero />
     </div>
   );
 }
