@@ -23,7 +23,7 @@ function Authentication({ children }) {
       });
   };
 
-  return <div onClick={onSignInClick}>{children}</div>;
+  return <div onClick={()=>onSignInClick}>{children}</div>;
 }
 
 export default Authentication;

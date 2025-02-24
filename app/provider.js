@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useEffect, useContext, useState } from "react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/configs/firebaseConfig";
+import { ConvexProvider, ConvexReactClient, useMutation } from "convex/react";
+import { onAuthStateChanged } from "firebase/auth";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { use, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./_context/AuthContext";
-
+import { api } from "@/convex/_generated/api";
 
 function Provider({ children }) {
-  const [user, setUser] = useState(null);
-  
+  const [user, setUser] = useState();
+  const CreateUser = useMutation(api.users.CreateNewUser);
   useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -23,16 +24,18 @@ function Provider({ children }) {
     }, []);
     return (
       <div>
-        <AuthContext.Provider value={{ user }}>
-      <NextThemesProvider
-        attribute="class"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {children}
-          </NextThemesProvider>
+
+          <AuthContext.Provider value={{ user }}>
+            <NextThemesProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+                  {children}
+            </NextThemesProvider>
           </AuthContext.Provider>
+
     </div>
   );
 }

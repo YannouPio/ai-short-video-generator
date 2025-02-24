@@ -1,5 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import Authentication from "./Authentication";
+
 
 function Hero() {
   return (
@@ -15,7 +17,10 @@ function Hero() {
         <Button size="lg" variant="secondary">
           了解更多
         </Button>
-        <Button size="lg">开始</Button>
+
+        <Authentication>
+          <Button size="lg">开始</Button>
+        </Authentication>
       </div>
     </div>
   );

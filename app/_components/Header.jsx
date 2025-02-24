@@ -21,7 +21,7 @@ function Header() {
             <Button>Get Started</Button>
           </Authentication> :
             <div className="flex items-center gap-3">
-              <Link href={'/dashboard'}></Link>
+              {/* <Link href={'/dashboard'}></Link> */}
               <Button>仪表盘</Button>
               <Image src={user?.photoURL} alt="user" width={40} height={40} className="rounded-full" />
             </div>
